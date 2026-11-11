@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GIRC - Sistema de Gestión Integral de Recursos y Comercialización</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+    <!-- NAVBAR GLOBAL -->
+    <header class="navbar">
+        <div class="logo">
+            <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxYz-OrwXk447YXGt3TRmrQyEFqNHb5XF3K1HNnXZqTA&s=10" target="_blank" rel="noopener noreferrer" aria-label="Ir al logo de GIRC">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxYz-OrwXk447YXGt3TRmrQyEFqNHb5XF3K1HNnXZqTA&s=10" alt="Logo de GIRC">
+                <span>GIRC</span>
+            </a>
+        </div>
+        <nav class="nav-links">
+            <a href="#login">Login</a>
+            <a href="#dashboard">Dashboard</a>
+            <a href="#catalogo">Catálogo</a>
+            <a href="#pedidos">Pedidos</a>
+            <a href="#reportes">Reportes</a>
+        </nav>
+    </header>
+
+    <main class="container">
+
+        <!-- PANTALLA 1: LOGIN -->
+        <section id="login" class="screen-section">
+            <div class="card login-card">
+                <h2>Portal de Acceso</h2>
+                <p class="subtitle">Autenticación segura basada en roles (JWT)</p>
+                <form onsubmit="event.preventDefault();">
+                    <div class="form-group">
+                        <label>Correo Electrónico</label>
+                        <input type="email" value="admin@girc-tdea.edu.co" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" value="*********" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- PANTALLA 2: DASHBOARD -->
+        <section id="dashboard" class="screen-section">
+            <div class="section-header">
+                <h2>Consola de Administración</h2>
+                <span class="badge">Rol: Administrador</span>
+            </div>
+            <div class="kpi-grid">
+                <div class="kpi-card">
+                    <h3>Ingresos Hoy</h3>
+                    <p class="kpi-value">$1,450,000</p>
+                </div>
+                <div class="kpi-card">
+                    <h3>Órdenes Activas</h3>
+                    <p class="kpi-value">12 Pedidos</p>
+                </div>
+                <div class="kpi-card alert">
+                    <h3>Alertas Stock</h3>
+                    <p class="kpi-value">3 Recursos</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PANTALLA 3: CATÁLOGO E INVENTARIO -->
+        <section id="catalogo" class="screen-section">
+            <div class="section-header">
+                <h2>Gestión de Catálogo e Inventario</h2>
+                <span class="badge">Módulo Almacén</span>
+            </div>
+            <div class="grid-2col">
+                <div class="card">
+                    <h3>Nuevo Artículo (RN-01)</h3>
+                    <form onsubmit="event.preventDefault();">
+                        <div class="form-group">
+                            <label>Código SKU</label>
+                            <input type="text" value="TAL-001">
+                        </div>
+                        <div class="form-group">
+                            <label>Nombre del Producto</label>
+                            <input type="text" value="Taladro Percutor">
+                        </div>
+                        <div class="form-group">
+                            <label>Stock Mínimo (≥ 1)</label>
+                            <input type="number" value="5">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Registrar Producto</button>
+                    </form>
+                </div>
+                <div class="card">
+                    <h3>Existencias en Bodega</h3>
+                    <table class="data-table">
+                        <thead>
+                            <tr><th>SKU</th><th>Nombre</th><th>Stock</th><th>Estado</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>TAL-001</td><td>Taladro</td><td>12</td><td><span class="tag success">Disponible</span></td></tr>
+                            <tr><td>AMF-023</td><td>Amoladora</td><td>2</td><td><span class="tag warning">Crítico</span></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- PANTALLA 4: MÓDULO DE PEDIDOS -->
+        <section id="pedidos" class="screen-section">
+            <div class="section-header">
+                <h2>Portal Comercial y Generación de Órdenes</h2>
+                <span class="badge">Cliente / Vendedor</span>
+            </div>
+            <div class="card">
+                <table class="data-table">
+                    <thead>
+                        <tr><th>Producto</th><th>Disponible</th><th>Cantidad Solicitada</th><th>Acción</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Amoladora 4.5"</td>
+                            <td>2 Unidades</td>
+                            <td><input type="number" value="5" class="input-sm"></td>
+                            <td><button class="btn btn-disabled" disabled>Sin Stock (RN-02)</button></td>
+                        </tr>
+                        <tr>
+                            <td>Taladro Percutor</td>
+                            <td>12 Unidades</td>
+                            <td><input type="number" value="3" class="input-sm"></td>
+                            <td><button class="btn btn-success">Añadir al Pedido</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="action-footer">
+                    <button class="btn btn-primary">Confirmar Orden ($450,000)</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- PANTALLA 5: REPORTES Y VENTAS -->
+        <section id="reportes" class="screen-section">
+            <div class="section-header">
+                <h2>Consolidados de Auditoría y Ventas</h2>
+                <span class="badge">Módulo Gerencial</span>
+            </div>
+            <div class="card">
+                <div class="filters-bar">
+                    <div><label>Desde:</label> <input type="date" value="2026-11-01"></div>
+                    <div><label>Hasta:</label> <input type="date" value="2026-11-11"></div>
+                    <button class="btn btn-primary">Consultar</button>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr><th>ID Orden</th><th>Fecha Despacho</th><th>Total Neto</th><th>Estado</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>ORDEN-2026-01</td><td>05/11/2026</td><td>$450,000</td><td>Completado</td></tr>
+                        <tr><td>ORDEN-2026-04</td><td>09/11/2026</td><td>$180,000</td><td>Despachado</td></tr>
+                    </tbody>
+                </table>
+                <div class="action-footer">
+                    <button class="btn btn-secondary">Exportar a Excel (.XLSX)</button>
+                    <button class="btn btn-secondary">Exportar a PDF</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+</body>
+</html>

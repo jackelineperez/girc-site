@@ -36,24 +36,25 @@ body {
 }
 
 .logo {
-    font-weight: bold;
-    font-size: 1.2rem;
-}
-
-.logo a {
-    display: inline-flex;
+    display: flex;
     align-items: center;
     gap: 0.75rem;
-    color: white;
-    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.2rem;
+    letter-spacing: 0.03em;
 }
 
 .logo img {
-    width: 36px;
-    height: 36px;
+    width: 44px;
+    height: 44px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid rgba(255, 255, 255, 0.4);
+    background: white;
+    padding: 2px;
+}
+
+.logo span {
+    white-space: nowrap;
 }
 
 .nav-links a {
@@ -260,46 +261,9 @@ body {
     font-weight: 600;
 }
 
-.tag.info { background: #ebf8ff; color: #2b6cb0; }
+.tag.success { background: #dcfce7; color: #166534; }
+.tag.warning { background: #fee2e2; color: #991b1b; }
 
-.login-header {
-    margin-bottom: 2rem;
-}
-
-.btn-block {
-    display: block;
-    width: 100%;
-}
-
-.total-display {
-    font-size: 1.2rem;
-    color: var(--primary-color);
-}
-
-/* Mejoras visuales adicionales */
-.card h3 {
-    margin-bottom: 1.5rem;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    color: var(--primary-color);
-    font-size: 1.1rem;
-}
-
-.form-group label i {
-    margin-right: 5px;
-    color: var(--primary-color);
-}
-
-.kpi-card {
-    transition: transform 0.3s ease;
-    cursor: default;
-}
-
-.kpi-card:hover {
-    transform: translateY(-5px);
-}
-
-.badge {
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+@media (max-width: 768px) {
+    .grid-2col { grid-template-columns: 1fr; }
 }

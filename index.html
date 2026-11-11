@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GIRC - Gestión Integral de Recursos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,57 +12,67 @@
     <!-- NAVBAR GLOBAL -->
     <header class="navbar">
         <div class="logo">
-            <a href="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxYz-OrwXk447YXGt3TRmrQyEFqNHb5XF3K1HNnXZqTA&s=10" target="_blank" rel="noopener noreferrer" aria-label="Ir al logo de GIRC">
+            <a href="#" onclick="showSection('dashboard')">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTxYz-OrwXk447YXGt3TRmrQyEFqNHb5XF3K1HNnXZqTA&s=10" alt="Logo de GIRC">
-                <span>GIRC</span>
+                <span>GIRC <small>TdeA</small></span>
             </a>
         </div>
         <nav class="nav-links">
-            <a href="#login">Login</a>
-            <a href="#dashboard">Dashboard</a>
-            <a href="#catalogo">Catálogo</a>
-            <a href="#pedidos">Pedidos</a>
-            <a href="#reportes">Reportes</a>
+            <a href="#" onclick="showSection('login')" id="nav-login"><i class="fas fa-sign-in-alt"></i> Login</a>
+            <a href="#" onclick="showSection('dashboard')" id="nav-dashboard" class="active"><i class="fas fa-chart-line"></i> Dashboard</a>
+            <a href="#" onclick="showSection('catalogo')" id="nav-catalogo"><i class="fas fa-boxes"></i> Catálogo</a>
+            <a href="#" onclick="showSection('pedidos')" id="nav-pedidos"><i class="fas fa-shopping-cart"></i> Pedidos</a>
+            <a href="#" onclick="showSection('reportes')" id="nav-reportes"><i class="fas fa-file-invoice-dollar"></i> Reportes</a>
         </nav>
     </header>
 
     <main class="container">
 
         <!-- PANTALLA 1: LOGIN -->
-        <section id="login" class="screen-section">
-            <div class="card login-card">
-                <h2>Portal de Acceso</h2>
-                <p class="subtitle">Autenticación segura basada en roles (JWT)</p>
-                <form onsubmit="event.preventDefault();">
+        <section id="login" class="screen-section" style="display:none;">
+            <div class="login-card">
+                <div class="login-header">
+                    <i class="fas fa-user-shield fa-3x" style="color: var(--primary-color); margin-bottom: 1rem;"></i>
+                    <h2>Portal de Acceso</h2>
+                    <p class="subtitle">Autenticación segura basada en roles (JWT)</p>
+                </div>
+                <form onsubmit="event.preventDefault(); showSection('dashboard');">
                     <div class="form-group">
-                        <label>Correo Electrónico</label>
+                        <label><i class="fas fa-envelope"></i> Correo Electrónico</label>
                         <input type="email" value="admin@girc-tdea.edu.co" required>
                     </div>
                     <div class="form-group">
-                        <label>Contraseña</label>
+                        <label><i class="fas fa-lock"></i> Contraseña</label>
                         <input type="password" value="*********" required>
                     </div>
                     <button type="submit" class="btn btn-primary">Iniciar Sesión</button>
                 </form>
+                <p style="font-size: 0.75rem; color: #888; margin-top: 1rem;">RNF-03: Bloqueo tras 5 intentos fallidos.</p>
             </div>
         </section>
 
         <!-- PANTALLA 2: DASHBOARD -->
         <section id="dashboard" class="screen-section">
             <div class="section-header">
-                <h2>Consola de Administración</h2>
-                <span class="badge">Rol: Administrador</span>
+                <div>
+                    <h2>Consola de Administración</h2>
+                    <p style="color: #666; font-size: 0.9rem;">Bienvenido al sistema GIRC</p>
+                </div>
+                <span class="badge">Rol: Administrador (RN-04)</span>
             </div>
             <div class="kpi-grid">
                 <div class="kpi-card">
+                    <i class="fas fa-money-bill-wave fa-2x" style="color: var(--primary-color); margin-bottom: 0.5rem;"></i>
                     <h3>Ingresos Hoy</h3>
                     <p class="kpi-value">$1,450,000</p>
                 </div>
                 <div class="kpi-card">
+                    <i class="fas fa-box-open fa-2x" style="color: #2b6cb0; margin-bottom: 0.5rem;"></i>
                     <h3>Órdenes Activas</h3>
                     <p class="kpi-value">12 Pedidos</p>
                 </div>
                 <div class="kpi-card alert">
+                    <i class="fas fa-exclamation-circle fa-2x" style="color: var(--danger-color); margin-bottom: 0.5rem;"></i>
                     <h3>Alertas Stock</h3>
                     <p class="kpi-value">3 Recursos</p>
                 </div>
@@ -69,17 +80,17 @@
         </section>
 
         <!-- PANTALLA 3: CATÁLOGO E INVENTARIO -->
-        <section id="catalogo" class="screen-section">
+        <section id="catalogo" class="screen-section" style="display:none;">
             <div class="section-header">
                 <h2>Gestión de Catálogo e Inventario</h2>
                 <span class="badge">Módulo Almacén</span>
             </div>
             <div class="grid-2col">
                 <div class="card">
-                    <h3>Nuevo Artículo (RN-01)</h3>
+                    <h3><i class="fas fa-plus-circle"></i> Nuevo Artículo (RN-01)</h3>
                     <form onsubmit="event.preventDefault();">
                         <div class="form-group">
-                            <label>Código SKU</label>
+                            <label>Código SKU (Único)</label>
                             <input type="text" value="TAL-001">
                         </div>
                         <div class="form-group">
@@ -94,7 +105,7 @@
                     </form>
                 </div>
                 <div class="card">
-                    <h3>Existencias en Bodega</h3>
+                    <h3><i class="fas fa-list"></i> Existencias en Bodega</h3>
                     <table class="data-table">
                         <thead>
                             <tr><th>SKU</th><th>Nombre</th><th>Stock</th><th>Estado</th></tr>
@@ -109,15 +120,15 @@
         </section>
 
         <!-- PANTALLA 4: MÓDULO DE PEDIDOS -->
-        <section id="pedidos" class="screen-section">
+        <section id="pedidos" class="screen-section" style="display:none;">
             <div class="section-header">
-                <h2>Portal Comercial y Generación de Órdenes</h2>
+                <h2>Portal Comercial y Órdenes</h2>
                 <span class="badge">Cliente / Vendedor</span>
             </div>
             <div class="card">
                 <table class="data-table">
                     <thead>
-                        <tr><th>Producto</th><th>Disponible</th><th>Cantidad Solicitada</th><th>Acción</th></tr>
+                        <tr><th>Producto</th><th>Disponible</th><th>Cantidad</th><th>Acción</th></tr>
                     </thead>
                     <tbody>
                         <tr>
@@ -129,45 +140,69 @@
                         <tr>
                             <td>Taladro Percutor</td>
                             <td>12 Unidades</td>
-                            <td><input type="number" value="3" class="input-sm"></td>
+                            <td><input type="number" value="1" class="input-sm"></td>
                             <td><button class="btn btn-success">Añadir al Pedido</button></td>
                         </tr>
                     </tbody>
                 </table>
                 <div class="action-footer">
-                    <button class="btn btn-primary">Confirmar Orden ($450,000)</button>
+                    <div style="margin-right: 20px; font-size: 1.1rem;">Total: <strong>$450,000</strong></div>
+                    <button class="btn btn-primary" style="width: auto;">Confirmar Orden</button>
                 </div>
             </div>
         </section>
 
         <!-- PANTALLA 5: REPORTES Y VENTAS -->
-        <section id="reportes" class="screen-section">
+        <section id="reportes" class="screen-section" style="display:none;">
             <div class="section-header">
-                <h2>Consolidados de Auditoría y Ventas</h2>
+                <h2>Consolidados de Auditoría</h2>
                 <span class="badge">Módulo Gerencial</span>
             </div>
             <div class="card">
                 <div class="filters-bar">
                     <div><label>Desde:</label> <input type="date" value="2026-11-01"></div>
                     <div><label>Hasta:</label> <input type="date" value="2026-11-11"></div>
-                    <button class="btn btn-primary">Consultar</button>
+                    <button class="btn btn-primary" style="width: auto;">Consultar</button>
                 </div>
                 <table class="data-table">
                     <thead>
                         <tr><th>ID Orden</th><th>Fecha Despacho</th><th>Total Neto</th><th>Estado</th></tr>
                     </thead>
                     <tbody>
-                        <tr><td>ORDEN-2026-01</td><td>05/11/2026</td><td>$450,000</td><td>Completado</td></tr>
-                        <tr><td>ORDEN-2026-04</td><td>09/11/2026</td><td>$180,000</td><td>Despachado</td></tr>
+                        <tr><td>ORDEN-2026-01</td><td>05/11/2026</td><td>$450,000</td><td><span class="tag success">Completado</span></td></tr>
+                        <tr><td>ORDEN-2026-04</td><td>09/11/2026</td><td>$180,000</td><td><span class="tag info">Despachado</span></td></tr>
                     </tbody>
                 </table>
                 <div class="action-footer">
-                    <button class="btn btn-secondary">Exportar a Excel (.XLSX)</button>
-                    <button class="btn btn-secondary">Exportar a PDF</button>
+                    <button class="btn btn-secondary"><i class="fas fa-file-excel"></i> Excel</button>
+                    <button class="btn btn-secondary"><i class="fas fa-file-pdf"></i> PDF</button>
                 </div>
             </div>
         </section>
 
     </main>
+
+    <script>
+        function showSection(sectionId) {
+            // Ocultar todas las secciones
+            document.querySelectorAll('.screen-section').forEach(section => {
+                section.style.display = 'none';
+            });
+            
+            // Mostrar la sección seleccionada
+            document.getElementById(sectionId).style.display = 'block';
+            
+            // Actualizar estado activo en la navegación
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            const activeLink = document.getElementById('nav-' + sectionId);
+            if (activeLink) activeLink.classList.add('active');
+        }
+
+        // Mostrar dashboard por defecto al cargar si no es el login
+        // showSection('login'); 
+    </script>
 </body>
+
 </html>
